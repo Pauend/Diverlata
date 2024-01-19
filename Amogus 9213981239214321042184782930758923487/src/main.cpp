@@ -11,9 +11,17 @@ void setup(){
   HC12.begin(9600);
   delay(500);
 
-  HC12.write("wasaaa");
+  
+  HC12.write("AT+V");
+  delay(100);
+  HC12.write("AT+DEFAULT");
+  delay(100);
+  HC12.write("AT+RX");
+
   digitalWrite(HC12SET, HIGH);
 
+  
+  HC12.write("wasaaa");
 }
 
 void loop(){
@@ -23,4 +31,5 @@ void loop(){
   while(Serial.available()){
     HC12.write(Serial.read());
   }
+  
 }
